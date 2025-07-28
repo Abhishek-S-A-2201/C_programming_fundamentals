@@ -90,19 +90,7 @@ void resize_array(int *ptr, int *len, int *cap)
         *cap *= 2;
     }
 
-    int *new_array = (int *)malloc(*cap * sizeof(int));
-
-    for (int i = 0; i < *len; i++)
-    {
-        *(new_array + i) = *(ptr + i);
-    }
-    print_array(new_array, *len);
-
-    int *temp = ptr;
-    ptr = new_array;
-
-    // free(temp);
-    temp = NULL;
+    ptr = (int *)realloc(ptr, (*cap) * sizeof(int));
 
     printf("Resizing Array...\n");
     printf("Updated capacity of the array: %d\n", *cap);
